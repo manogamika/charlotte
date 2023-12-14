@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml version="1.0">
-<meta name="author" content="Andrey"/> <meta name="language" content="Russian"/>
+<meta name="author" content="Andrey"/> <meta name="language" content="Indonesian"/>
 
     <category>
         <pattern>
-            привет *
+            aaaa
         </pattern>
         <template>
-            привет <star/>
+            aaaa<star/>
         </template>
 	</category>
 	
@@ -16,7 +16,7 @@
             *
         </pattern>
         <template>
-            У меня нет на это ответа...
+           aaaa
         </template>
     </category>
 	

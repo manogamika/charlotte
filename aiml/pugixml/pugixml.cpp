@@ -1,29 +1,13 @@
-/**
- * pugixml parser - version 1.9
- * --------------------------------------------------------
- * Copyright (C) 2006-2019, by Arseny Kapoulkine (arseny.kapoulkine@gmail.com)
- * Report bugs and download new versions at https://pugixml.org/
- *
- * This library is distributed under the MIT License. See notice at the end
- * of this file.
- *
- * This work is based on the pugxml parser, which is:
- * Copyright (C) 2003, by Kristen Wegner (kristen@tima.net)
- */
-
 #ifndef SOURCE_PUGIXML_CPP
 #define SOURCE_PUGIXML_CPP
-
 #include "pugixml.hpp"
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
 #include <limits.h>
-
 #ifdef PUGIXML_WCHAR_MODE
-#	include <wchar.h>
+#include <wchar.h>
 #endif
 
 #ifndef PUGIXML_NO_XPATH
@@ -37,41 +21,39 @@
 #	include <string>
 #endif
 
-// For placement new
 #include <new>
 
 #ifdef _MSC_VER
 #	pragma warning(push)
-#	pragma warning(disable: 4127) // conditional expression is constant
-#	pragma warning(disable: 4324) // structure was padded due to __declspec(align())
-#	pragma warning(disable: 4702) // unreachable code
-#	pragma warning(disable: 4996) // this function or variable may be unsafe
+#	pragma warning(disable: 4127)
+#	pragma warning(disable: 4324) 
+#	pragma warning(disable: 4702) 
+#	pragma warning(disable: 4996) 
 #endif
 
 #if defined(_MSC_VER) && defined(__c2__)
 #	pragma clang diagnostic push
-#	pragma clang diagnostic ignored "-Wdeprecated" // this function or variable may be unsafe
+#	pragma clang diagnostic ignored "-Wdeprecated" 
 #endif
 
 #ifdef __INTEL_COMPILER
-#	pragma warning(disable: 177) // function was declared but never referenced
-#	pragma warning(disable: 279) // controlling expression is constant
-#	pragma warning(disable: 1478 1786) // function was declared "deprecated"
-#	pragma warning(disable: 1684) // conversion from pointer to same-sized integral type
+#	pragma warning(disable: 177)
+#	pragma warning(disable: 279)
+#	pragma warning(disable: 1478 1786)
+#	pragma warning(disable: 1684)
 #endif
 
 #if defined(__BORLANDC__) && defined(PUGIXML_HEADER_ONLY)
-#	pragma warn -8080 // symbol is declared but never used; disabling this inside push/pop bracket does not make the warning go away
+#	pragma warn -8080
 #endif
 
 #ifdef __BORLANDC__
 #	pragma option push
-#	pragma warn -8008 // condition is always false
-#	pragma warn -8066 // unreachable code
+#	pragma warn -8008 
+#	pragma warn -8066 
 #endif
 
 #ifdef __SNC__
-// Using diag_push/diag_pop does not disable the warnings inside templates due to a compiler bug
 #	pragma diag_suppress=178 // function was declared but never referenced
 #	pragma diag_suppress=237 // controlling expression is constant
 #endif
@@ -198,8 +180,6 @@ PUGI__NS_BEGIN
 		static deallocation_function deallocate;
 	};
 
-	// Global allocation functions are stored in class statics so that in header mode linker deduplicates them
-	// Without a template<> we'll get multiple definitions of the same static
 	template <typename T> allocation_function xml_memory_management_function_storage<T>::allocate = default_allocate;
 	template <typename T> deallocation_function xml_memory_management_function_storage<T>::deallocate = default_deallocate;
 
@@ -12366,7 +12346,7 @@ namespace pugi
 
 			last = nvar;
 
-			// copy the value; this can fail due to out-of-memory conditions
+
 			if (!impl::copy_xpath_variable(nvar, var)) return false;
 
 			var = var->_next;
